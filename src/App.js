@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Login from "./Components/Login";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from "react";
+import { createTheme } from "@mui/material";
+import { ThemeProvider } from "@mui/system";
+import Home from "./Components/Home";
+import OrderList from "./Components/OrderList";
+import axios from "axios";
+import BASE_URL from "./Utils/Constants";
+import NavBar from "./Components/NavBar";
 
 function App() {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#f5f5f5",
+      },
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <NavBar />
+      <Router>
+        <div>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/orders" element={<OrderList />} />
+          </Routes>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
