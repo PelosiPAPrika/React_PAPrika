@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import { createTheme } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
-import BASE_URL from "../Utils/Constants";
+import Constants from "../Utils/Constants";
 import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 
@@ -20,7 +20,7 @@ export default function LoginRectangle() {
   const submitLogin = () => {
     axios
       .post(
-        `${BASE_URL}/login`,
+        `${Constants.BASE_URL}/login`,
         { username: user, password: password }
         // { headers }
       )
