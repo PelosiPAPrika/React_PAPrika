@@ -21,7 +21,6 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavBar />
       <Router>
         <div>
           <Routes>

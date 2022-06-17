@@ -25,6 +25,8 @@ export default function OrderList() {
 
   const [selectedOrder, setSelectedOrder] = useState(null);
 
+  const [selectedId, setSelectedId] = useState(0);
+
   const orderListFunction = async () => {
     try {
       const result = await axios.get(`${Constants.BASE_URL}/order/all`, {
@@ -36,13 +38,18 @@ export default function OrderList() {
     }
   };
 
+  const handleClick = (order) => {
+    setSelectedOrder(order);
+    setSelectedId(order.id);
+  };
+
   useEffect(() => {
     orderListFunction();
   }, []);
 
   const onOrderReceived = (order) => {
-    setOrderList(orderList.push(order))
-  }
+    setOrderList((oldOrderList) => [...oldOrderList, order]);
+  };
 
   return (
     <>
@@ -55,11 +62,15 @@ export default function OrderList() {
         debug={false}
       />
       <Box display="flex" justifyContent="left" minHeight="100vh">
-        <div className="h-full w-1/5 rounded-md shadow-md">
-          <ul className="flex flex-col gap-5">
-            {orderList.map((order) => (
-              <Order onClick={() => setSelectedOrder(order)} order={order} />
-            ))}
+        <div className="h-[85vh] w-1/5 mt-4 rounded-md shadow-md overflow-y-scroll">
+          <ul className="flex flex-col gap-5 ml-1">
+            {orderList.map((order) =>
+              selectedId === order.id ? (
+                <Order onClick={() => handleClick(order)} order={order} background="rgba(	217, 55, 43, 0.2)" />
+              ) : (
+                <Order onClick={() => handleClick(order)} order={order} background="#f5f5f5"/>
+              )
+            )}
           </ul>
         </div>
         <OrderDetails order={selectedOrder} />
