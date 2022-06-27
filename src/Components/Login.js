@@ -25,9 +25,10 @@ export default function LoginRectangle() {
         // { headers }
       )
       .then((response) => {
+        console.log(response.data);
         localStorage.setItem(
           "jwt-token",
-          `Bearer ${response.data.access_token}`
+          `Bearer ${response.data.jwtToken}`
         );
         navigate("/home");
       })
@@ -45,7 +46,7 @@ export default function LoginRectangle() {
       alignItems="center"
       minHeight="100vh"
     >
-      <div className="flex flex-col items-center w-96 h-[600px] bg-[#C4C4C4] rounded-2xl">
+      <div className="flex flex-col items-center w-96 h-[600px] bg-[#141414] rounded-2xl">
         <form
           className="my-auto flex flex-col items-center"
           onSubmit={(e) => {

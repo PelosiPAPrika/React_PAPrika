@@ -2,9 +2,9 @@ import { Card } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 
-const Order = ({ order, onClick, background }) => {
+const Order = ({ order, onClick, style }) => {
   return (
-    <Card style={{ background: background, paddingLeft : "10px",  paddingRight : "10px" }} onClick={onClick}>
+    <Card style={style} onClick={onClick}>
       <div className="m-5">
         <Box display="flex" justifyContent="space-between">
           <h1 className="font-bold">{order.tableToServe.tableNumber}</h1>
