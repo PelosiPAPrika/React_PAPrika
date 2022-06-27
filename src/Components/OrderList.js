@@ -10,7 +10,7 @@ const jwtToken = localStorage.getItem("jwt-token");
 
 const SOCKET_URL = Constants.SOCKET_URL;
 
-console.log(jwtToken.jwtToken);
+console.log(jwtToken);
 
 const headers = {
   Authorization: jwtToken,
@@ -29,7 +29,7 @@ export default function OrderList() {
 
   const orderListFunction = async () => {
     try {
-      const result = await axios.get(`${Constants.BASE_URL}/order/all`, {
+      const result = await axios.get(`${Constants.BASE_URL}/order/submit`, {
         headers: headers,
       });
       setOrderList(result.data);
@@ -48,13 +48,13 @@ export default function OrderList() {
   }, []);
 
   const onOrderReceived = (order) => {
+    console.log("aaaaaaaaaaaaaaaaaa")
     console.log(order)
     setOrderList((oldOrderList) => [...oldOrderList, order]);
   };
 
   const style = {
     background: "rgba(	217, 55, 43, 0.2)",
-    width: "200px",
     paddingLeft: "10px",
     paddingRight: "10px",
   };
@@ -69,11 +69,12 @@ export default function OrderList() {
     <>
       <SockJsClient
         url={SOCKET_URL}
+        headers={headers}
         topics={["/topic/order"]}
         onConnect={console.log("Connected!!")}
         onDisconnect={console.log("Disconnected!")}
         onMessage={(order) => onOrderReceived(order)}
-        debug={false}
+        debug={true}
       />
       <Box display="flex" justifyContent="left" minHeight="100vh">
         <div className="h-screen w-1/5 rounded-md shadow-md overflow-y-scroll">
@@ -91,7 +92,7 @@ export default function OrderList() {
             )}
           </ul>
         </div>
-        <OrderDetails order={selectedOrder} />
+        <OrderDetails order={selectedOrder} orderList={orderList} setOrderList={setOrderList} />
       </Box>
     </>
   );
