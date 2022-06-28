@@ -54,15 +54,15 @@ export default function OrderList() {
   };
 
   const style = {
-    background: "rgba(	217, 55, 43, 0.2)",
-    paddingLeft: "10px",
-    paddingRight: "10px",
+    // background: "rgba(	217, 55, 43, 0.2)",
+    // paddingLeft: "10px",
+    // paddingRight: "10px",
   };
 
   const style2 = {
-    background: "#f5f5f5",
-    paddingLeft: "10px",
-    paddingRight: "10px",
+    // background: "#f5f5f5",
+    // paddingLeft: "10px",
+    // paddingRight: "10px",
   };
 
   return (

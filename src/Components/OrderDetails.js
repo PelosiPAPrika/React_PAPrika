@@ -46,6 +46,6 @@ export default function OrderDetails({ order, orderList, setOrderList }) {
       </div>
     </div>
   ) : (
-    <></>
+    <div className="w-full"/>
   );
 }
