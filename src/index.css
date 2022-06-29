@@ -17,3 +17,7 @@
 ::-webkit-scrollbar-track {
     @apply bg-transparent
 }
+
+::-ms-reveal {
+    filter: invert(100%);
+}

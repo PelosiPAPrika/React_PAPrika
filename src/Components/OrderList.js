@@ -76,8 +76,8 @@ export default function OrderList() {
         onMessage={(order) => onOrderReceived(order)}
         debug={true}
       />
-      <Box display="flex" justifyContent="left" minHeight="100vh">
-        <div className="h-screen w-1/5 rounded-md shadow-md overflow-y-scroll">
+      <Box display="flex" justifyContent="left" minHeight="100vh" bgcolor="#141414">
+        <div className="h-screen w-1/5 rounded-md shadow-md overflow-y-scroll bg-[#141414] pr-1">
           <ul className="flex flex-col gap-5 ml-1">
             {orderList.map((order) =>
               selectedId === order.id ? (

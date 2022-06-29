@@ -14,7 +14,7 @@ const Order = ({ order, onClick, style }) => {
         <Box display="flex" justifyContent="space-between">
           <p className="m-1">{`Id: ${order.id}`}</p>
           <p className="m-1">{`Price: ${order.price} €`}</p>
-          <p className="m-1">{`Time: 12:00`}</p>
+          <p className="m-1">{`Time: ${order.createdDateTime.split(" ")[1]}`}</p>
         </Box>
       </div>
     </Card>
