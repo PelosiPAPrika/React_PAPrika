@@ -6,6 +6,7 @@ import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 import Home from "./Components/Home";
 import OrderList from "./Components/OrderList";
+import TableList from "./Components/TableList";
 import axios from "axios";
 import BASE_URL from "./Utils/Constants";
 import NavBar from "./Components/NavBar";
@@ -26,7 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/orders" element={<OrderList />} />
+            <Route path="/home/table" element={<TableList />} />
           </Routes>
         </div>
       </Router>

@@ -8,7 +8,10 @@ import { useNavigate } from "react-router-dom";
 import BackgroundImage from "../Images/bg.jpg";
 
 const headers = {
-  "Access-Control-Allow-Origin": "*",
+  // "Access-Control-Allow-Origin": "*",
+  //"Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+  //"Access-Control-Allow-Headers": "*",
+  //"Content-Type, Authorization, X-Requested-With": "*"
 };
 
 export default function LoginRectangle() {
@@ -27,8 +30,8 @@ export default function LoginRectangle() {
     axios
       .post(
         `${Constants.BASE_URL}/login`,
-        { username: user, password: password }
-        // { headers }
+        { username: user, password: password },
+        { headers }
       )
       .then((response) => {
         console.log(response.data);
