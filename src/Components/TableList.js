@@ -1,6 +1,8 @@
 import axios from "axios";
 import Constants from "../Utils/Constants";
 import React, { useEffect, useState } from "react";
+import { Card, Box } from "@mui/material";
+import Table from "./Table";
 
 const jwtToken = localStorage.getItem("jwt-token");
 
@@ -15,6 +17,8 @@ const headers = {
 export default function TableList() {
   const [tableList, setTableList] = useState([]);
 
+  const [tableChanged, setTableChanged] = useState([]);
+
   const tableListFunction = async () => {
     try {
       const result = await axios.get(`${Constants.BASE_URL}/table/all`, {
@@ -26,36 +30,19 @@ export default function TableList() {
     }
   };
 
-  axios.defaults.headers.common["Authorization"] = jwtToken;
-  const unoccupyTable = async (id) => {
-    if(window.confirm("Tem certeza que deseja desocupar esta mesa") === true){
-      try {
-        const result = await axios.put(
-          `${Constants.BASE_URL}/table/leave/${id}`,
-          {
-            headers: headers,
-          }
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    }
-  };
-
   useEffect(() => {
     tableListFunction();
   }, []);
 
+  useEffect(() => {
+    tableListFunction();
+  }, [tableChanged])
+
   return (
-    <ul>
+    <div className="flex flex-row justify-evenly p-2">
       {tableList.map((table) => (
-        <div>
-          <li>{table.id}</li>
-          <li>{table.tableNumber}</li>
-          <li>{table.occupied.toString()}</li>
-          <button onClick={() => unoccupyTable(table.id)}> Unoccupy Table </button>
-        </div>
+        <Table table={table} setTableChanged={setTableChanged} />
       ))}
-    </ul>
+    </div>
   );
 }

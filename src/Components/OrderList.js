@@ -112,12 +112,14 @@ export default function OrderList() {
                   onClick={() => handleClick(order)}
                   order={order}
                   style={style}
+                  setSelectedOrder={setSelectedOrder}
                 />
               ) : (
                 <Order
                   onClick={() => handleClick(order)}
                   order={order}
                   style={style2}
+                  setSelectedOrder={setSelectedOrder}
                 />
               )
             )}

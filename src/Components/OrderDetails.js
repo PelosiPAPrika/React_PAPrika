@@ -9,7 +9,7 @@ const jwtToken = localStorage.getItem("jwt-token");
 
 console.log(jwtToken);
 
-export default function OrderDetails({ order, orderList, setOrderList }) {
+export default function OrderDetails({ order, orderList, setOrderList, setSelectedOrder }) {
   const columns = [
     {
       field: "id",
@@ -46,6 +46,7 @@ export default function OrderDetails({ order, orderList, setOrderList }) {
             return order.id !== id;
           });
           setOrderList(newOrderList);
+          setSelectedOrder(null)
         })
         .catch((error) => {
           alert(error);
