@@ -13,6 +13,12 @@ import NavBar from "./Components/NavBar";
 
 function App() {
   const theme = createTheme({
+    typography: {
+      fontFamily: [
+        "GabrielSans",
+        "sans-serif"
+      ].join(",")
+    },
     palette: {
       primary: {
         main: "#f5f5f5",
