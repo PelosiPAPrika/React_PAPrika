@@ -29,19 +29,19 @@ export default function LoginRectangle() {
   const submitLogin = () => {
     axios
       .post(
-        `${Constants.BASE_URL}/login`,
+        `${Constants.BASE_URL}/admin/login`,
         { username: user, password: password },
         { headers }
       )
       .then((response) => {
-        console.log(response.data);
         localStorage.setItem("jwt-token", `Bearer ${response.data.jwtToken}`);
         navigate("/home");
       })
       .catch((error) => {
+        console.log(error.response.status)
         console.log(error.code);
         console.log(error);
-        alert("Preencha os campos corretamente");
+        alert("Something went wrong " + error.response.data.message);
       });
   };
 

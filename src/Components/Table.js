@@ -27,6 +27,7 @@ export default function Table({ table, setTableChanged }) {
           })
           .catch((error) => {
             alert(error);
+            window.location.reload()
           });
       } catch (err) {
         console.log(err);
@@ -35,9 +36,9 @@ export default function Table({ table, setTableChanged }) {
   };
 
   return (
-    <div>
+    <div className="outline outline-1 rounded-sm">
       {table.occupied === true ? (
-        <div>
+        <div className="rounded-lg">
           <Box
             display="flex"
             justifyContent="space-between"

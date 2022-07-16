@@ -12,8 +12,6 @@ const jwtToken = localStorage.getItem("jwt-token");
 
 const SOCKET_URL = Constants.SOCKET_URL;
 
-console.log(jwtToken);
-
 const headers = {
   Authorization: jwtToken,
   //"Access-Control-Allow-Origin": "*",
@@ -32,7 +30,7 @@ export default function OrderList() {
   const navigate = useNavigate();
 
   const navigateToTable = () => {
-    navigate("table")
+    navigate("/table")
   }
 
   const orderListFunction = async () => {
@@ -119,7 +117,6 @@ export default function OrderList() {
                   onClick={() => handleClick(order)}
                   order={order}
                   style={style2}
-                  setSelectedOrder={setSelectedOrder}
                 />
               )
             )}
@@ -129,6 +126,7 @@ export default function OrderList() {
           order={selectedOrder}
           orderList={orderList}
           setOrderList={setOrderList}
+          setSelectedOrder={setSelectedOrder}
         />
       </Box>
     

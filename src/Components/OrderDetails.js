@@ -7,8 +7,6 @@ import { DataGrid } from "@mui/x-data-grid";
 
 const jwtToken = localStorage.getItem("jwt-token");
 
-console.log(jwtToken);
-
 export default function OrderDetails({ order, orderList, setOrderList, setSelectedOrder }) {
   const columns = [
     {
